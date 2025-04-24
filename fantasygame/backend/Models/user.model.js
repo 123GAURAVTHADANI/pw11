@@ -30,10 +30,6 @@ let userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    kyc: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "KYC",
-    },
   },
   { timestamps: true }
 );
