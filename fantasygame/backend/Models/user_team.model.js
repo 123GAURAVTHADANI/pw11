@@ -22,6 +22,10 @@ let userTeam = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Match",
     },
+    score: {
+      type: Number,
+      default: 25,
+    },
   },
   { timestamps: true }
 );

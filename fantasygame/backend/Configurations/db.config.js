@@ -1,7 +1,6 @@
 var mongoose = require("mongoose");
 function dbConfig() {
   try {
-    console.log("Hi");
     let mongo_url = process.env.MONGO_DB_CONNECTION_STRING;
     if (!mongo_url) {
       throw new Error("Mongo_db_url is missing");

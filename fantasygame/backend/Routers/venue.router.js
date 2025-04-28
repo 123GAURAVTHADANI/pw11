@@ -1,11 +1,11 @@
 const express = require("express");
-const { User } = require("../Models/user.model");
+const { Venue } = require("../Models/venue.model");
 
-const userRouter = express.Router();
+const venueRouter = express.Router();
 
-userRouter.post("/createUser", (req, res) => {
+venueRouter.post("/createVenue", (req, res) => {
   try {
-    User.create(req.body)
+    Venue.create(req.body)
       .then((response) => {
         res.status(201).json({ Message: "Data inserted!!!", data: response });
       })

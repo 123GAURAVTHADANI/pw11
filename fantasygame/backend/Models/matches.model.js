@@ -22,6 +22,16 @@ let matchSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
+    team_1_score: {
+      wicket1: Number,
+      score1: Number,
+      over1: Number,
+    },
+    team_2_score: {
+      wicket2: Number,
+      score2: Number,
+      over2: Number,
+    },
     match_time: {
       type: String,
       required: true,

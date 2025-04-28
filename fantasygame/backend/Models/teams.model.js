@@ -18,14 +18,18 @@ let teamSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Venue",
     },
-    team_matches: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Match",
-    },
-    team_players: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Player",
-    },
+    team_matches: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Match",
+      },
+    ],
+    team_players: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Player",
+      },
+    ],
   },
   { timestamps: true }
 );
