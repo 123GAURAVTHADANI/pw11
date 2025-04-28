@@ -1,5 +1,6 @@
 const express = require("express");
 const { Match } = require("../Models/matches.model");
+const { UserTeam } = require("../Models/user_team.model");
 
 const matchRouter = express.Router();
 
@@ -33,6 +34,7 @@ matchRouter.patch("/updateScore/:matchId/:team", async (req, res) => {
     let match = await Match.findOne({ _id: matchId });
 
     let newScore = req.body.score - match[team].score1;
+
     let points = newScore * 2;
 
     const result = await Match.findByIdAndUpdate(matchId, updateField, {
@@ -43,12 +45,13 @@ matchRouter.patch("/updateScore/:matchId/:team", async (req, res) => {
       { match_id: matchId },
       {
         $inc: { score: points },
-      }
+      },
+      { new: true }
     );
-    
+
     res
       .status(200)
-      .json({ Message: "Score Updated Succesfully", data: result });
+      .json({ Message: "Score Updated Succesfully", data: userTeams });
   } catch (error) {
     res
       .status(500)
