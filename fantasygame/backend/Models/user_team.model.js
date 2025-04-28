@@ -26,6 +26,14 @@ let userTeam = new mongoose.Schema(
       type: Number,
       default: 25,
     },
+    team_1: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Team",
+    },
+    team_2: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Team",
+    },
   },
   { timestamps: true }
 );

@@ -30,12 +30,22 @@ matchRouter.patch("/updateScore/:matchId/:team", async (req, res) => {
         },
       },
     };
-    console.log(updateField);
+    let match = await Match.findOne({ _id: matchId });
+
+    let newScore = req.body.score - match[team].score1;
+    let points = newScore * 2;
 
     const result = await Match.findByIdAndUpdate(matchId, updateField, {
       new: true,
     });
 
+    const userTeams = await UserTeam.updateMany(
+      { match_id: matchId },
+      {
+        $inc: { score: points },
+      }
+    );
+    
     res
       .status(200)
       .json({ Message: "Score Updated Succesfully", data: result });

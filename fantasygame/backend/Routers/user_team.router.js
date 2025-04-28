@@ -18,4 +18,16 @@ userTeam.post("/createUserTeam", async (req, res) => {
   }
 });
 
+userTeam.post("/updateScorePoints", async (req, res) => {
+  try {
+    let { team_1, team_2, new_score } = req.body;
+    const userTeams = await UserTeam.find({ team_1: team_1, team_2: team_2 }); 
+    const score_diff = new_score - 
+    await UserTeam.updateMany({ team_1: team_1, team_2: team_2 },{$inc:{}});
+    res.json({ data: userTeams });
+  } catch (error) {
+    res.status(500).json({ Message: "Something went Wrong!!", error: err });
+  }
+});
+
 module.exports = { userTeam };
