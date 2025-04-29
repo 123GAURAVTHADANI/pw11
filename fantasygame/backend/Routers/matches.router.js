@@ -48,7 +48,7 @@ matchRouter.patch("/updateScore/:matchId/:team", async (req, res) => {
       },
       { new: true }
     );
-
+  
     res
       .status(200)
       .json({ Message: "Score Updated Succesfully", data: userTeams });
